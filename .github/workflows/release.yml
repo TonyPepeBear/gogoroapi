@@ -25,4 +25,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            gogoroapi.csv
+            output/go-station.csv

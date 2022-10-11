@@ -1,7 +1,13 @@
 import csv
+import os
 from pykml import parser as kp
 
 goStations = []
+
+try:
+    os.mkdir("output")
+except FileExistsError:
+    pass
 
 with open("data.kml", "r", encoding="utf-8") as file:
     doc = kp.parse(file).getroot().Document
@@ -25,13 +31,13 @@ with open("data.kml", "r", encoding="utf-8") as file:
                     lat = d.value
             goStations.append({"name": p.name,
                               "address": addr,
-                              "lng" : lng,
-                              "lat": lat,
-                              })
+                               "lng": lng,
+                               "lat": lat,
+                               })
 
 print("Total GoStation: " + str(len(goStations)))
 
-with open("gogoroapi.csv", "w", encoding="utf-8", newline="") as file:
+with open("output/go-station.csv", "w", encoding="utf-8", newline="") as file:
     writer = csv.writer(file)
     writer.writerow(["name", "address", "lng", "lat"])
     for e in goStations:
