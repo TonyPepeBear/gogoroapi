@@ -31,7 +31,7 @@ with open("data.kml", "r", encoding="utf-8") as file:
 
 print("Total GoStation: " + str(len(goStations)))
 
-with open("gogoro.csv", "w", encoding="utf-8", newline="") as file:
+with open("gogoroapi.csv", "w", encoding="utf-8", newline="") as file:
     writer = csv.writer(file)
     writer.writerow(["name", "address", "lng", "lat"])
     for e in goStations:
